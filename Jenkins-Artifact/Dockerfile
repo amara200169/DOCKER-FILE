@@ -11,6 +11,8 @@ RUN apt-get update -y
 RUN mkdir -p /var/jenkins_home
 # Set the correct permissions for the Jenkins user
 RUN chown -R jenkins:jenkins /var/jenkins_home
+# Install Blue Ocean plugin 
+RUN jenkins-plugin-cli --plugins blueocean
 # Start Jenkins by default when the container runs
 ENTRYPOINT ["/usr/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
     
